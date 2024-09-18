@@ -88,7 +88,7 @@ return {
         },
       }
       -- Open parent directory in current window
-      vim.keymap.set("n", "<leader>o", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+      vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end,
   }
 }

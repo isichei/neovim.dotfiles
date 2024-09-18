@@ -64,11 +64,11 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = '*',
 })
 
 -- Delete highlighted into the void and paste over
@@ -77,8 +77,6 @@ vim.keymap.set("v", "<leader>p", "\"_dP", { remap = true })
 -- Delete into the void
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
-
-vim.keymap.set("n", "<leader>nt", "<Cmd>Neotree toggle<CR>", { remap = true })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -105,15 +103,9 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = tr
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
--- Resize window using <ctrl> arrow keys
-vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
 -- buffers
-vim.keymap.set("n", "<leader>k", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-vim.keymap.set("n", "<leader>j", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader><Tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+vim.keymap.set("n", "<leader><S-Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 -- better indenting
 vim.keymap.set("v", "<", "<gv")
@@ -126,3 +118,7 @@ vim.keymap.set("n", "<leader>nf", "<cmd>enew<cr>", { desc = "New File" })
 vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window horizontally", remap = true })
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window vertically", remap = true })
+
+-- quicklist navigation
+vim.keymap.set("n", "<leader-j>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader-k>", "<cmd>cprev<CR>zz")
