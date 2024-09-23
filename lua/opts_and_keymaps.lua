@@ -104,8 +104,8 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = tr
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
 -- buffers
-vim.keymap.set("n", "<leader><Tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-vim.keymap.set("n", "<leader><S-Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>j", "<cmd>bnext<cr>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>k", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 
 -- better indenting
 vim.keymap.set("v", "<", "<gv")
@@ -120,5 +120,5 @@ vim.keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window horizontally",
 vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window vertically", remap = true })
 
 -- quicklist navigation
-vim.keymap.set("n", "<leader-j>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<leader-k>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader><Tab>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader><S-Tab>", "<cmd>cprev<CR>zz")

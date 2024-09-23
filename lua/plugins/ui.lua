@@ -83,6 +83,9 @@ return {
     config = function()
       require("oil").setup {
         columns = { "icon", "size" },
+        keymaps = {
+          ["<C-h>"] = false,
+        },
         view_options = {
           show_hidden = true,
         },
