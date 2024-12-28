@@ -176,9 +176,12 @@ telescope.setup({
   },
   pickers = {
     find_files = {
-      -- `hidden = true` will still show the inside of `.git/` as it's not `.gitignore`d.
+      hidden = true, -- will still show the inside of `.git/` as it's not `.gitignore`d.
       find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--glob", "!**/.venv/*", "--glob", "!**/__pycache__/*" },
     },
+    colorscheme = {
+      enable_preview = true
+    }
   },
 })
 
@@ -190,6 +193,7 @@ vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc =
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch [C]olourschemes' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', function()
   local word = vim.fn.expand("<cword>")
