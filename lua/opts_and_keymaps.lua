@@ -122,3 +122,7 @@ vim.keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window vertically", r
 -- quicklist navigation
 vim.keymap.set("n", "<leader><Tab>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<leader><S-Tab>", "<cmd>cprev<CR>zz")
+
+-- change terminal mode esc
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
