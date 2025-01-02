@@ -126,3 +126,10 @@ vim.keymap.set("n", "<leader><S-Tab>", "<cmd>cprev<CR>zz")
 -- change terminal mode esc
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
+-- copy relative path to clipboard
+vim.keymap.set("n", "cr", function()
+	local relpath = vim.fn.expand("%:r") .. "." .. vim.fn.expand("%:e")
+	vim.fn.setreg("+", relpath)
+	print("Copied relative path: " .. relpath)
+end, { desc = "[C]opy [r]elative filepath to clipboard" }
+)
