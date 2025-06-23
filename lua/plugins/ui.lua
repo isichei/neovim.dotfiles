@@ -17,5 +17,24 @@ return {
       -- Open parent directory in current window
       vim.keymap.set("n", "<leader>o", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end,
+  },
+  {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {
+        filetypes = {
+          "css",
+          "javascript",
+          html = { mode = "foreground" },
+        },
+      }
+  },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+    config = function()
+      require("diffview").setup()
+    end,
   }
 }

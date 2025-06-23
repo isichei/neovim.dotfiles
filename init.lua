@@ -52,6 +52,8 @@ require('lazy').setup({
         vim.keymap.set("n", "<leader>gn", require("gitsigns").next_hunk, { buffer = bufnr, desc = "Go to next git Hunk" })
         vim.keymap.set("n", "<leader>gi", require("gitsigns").preview_hunk_inline,
           { buffer = bufnr, desc = "Git Preview Hunk Inline" })
+        vim.keymap.set("n", "<leader>gs", require("gitsigns").preview_hunk,
+          { buffer = bufnr, desc = "Git Preview Hunk" })
         vim.keymap.set("n", "<leader>ghr", ":Gitsigns reset_hunk<CR>", { buffer = bufnr, desc = "Git Reset Hunk" })
         vim.keymap.set("n", "<leader>ghR", require("gitsigns").reset_buffer,
           { buffer = bufnr, desc = "Git Reset Buffer" })
@@ -129,7 +131,7 @@ require('lazy').setup({
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'html', 'css' },
 
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
