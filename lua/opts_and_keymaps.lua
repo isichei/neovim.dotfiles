@@ -134,3 +134,7 @@ vim.keymap.set("n", "cr", function()
 	vim.fn.setreg("+", relpath)
 	print("Copied relative path: " .. relpath)
 end, { desc = "[C]opy [r]elative filepath to clipboard" })
+
+-- Close buffer
+vim.keymap.set("n", "<leader>cb", ":bp | bd#<CR>", { desc = "Close buffer without closing split" })
+
