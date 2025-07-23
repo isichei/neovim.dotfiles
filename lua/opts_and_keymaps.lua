@@ -128,8 +128,9 @@ vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
 -- copy relative path to clipboard
 vim.keymap.set("n", "cr", function()
-	local relpath = vim.fn.expand("%:r") .. "." .. vim.fn.expand("%:e")
+	local filepath = vim.api.nvim_buf_get_name(0) -- absolute path to current file
+	local cwd = vim.fn.getcwd() -- cwd from where nvim was started
+	local relpath = vim.fn.fnamemodify(filepath, ":." ) -- path relative to cwd
 	vim.fn.setreg("+", relpath)
 	print("Copied relative path: " .. relpath)
-end, { desc = "[C]opy [r]elative filepath to clipboard" }
-)
+end, { desc = "[C]opy [r]elative filepath to clipboard" })
