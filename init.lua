@@ -200,6 +200,17 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- Diagnostic display configuration
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '■',  -- Square symbol at end of line
+    spacing = 4,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+})
+
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",

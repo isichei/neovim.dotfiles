@@ -74,8 +74,8 @@ return {
           -- Add border to hover documentation
           vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
             border = "rounded",
-            max_width = 80,
-            max_height = 20,
+            max_width = 120,
+            max_height = 40,
           })
 
 
@@ -95,7 +95,6 @@ return {
               buffer = event.buf,
               callback = vim.lsp.buf.document_highlight,
             })
-
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
               buffer = event.buf,
               callback = vim.lsp.buf.clear_references,
