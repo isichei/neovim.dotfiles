@@ -6,7 +6,7 @@ return {
   {
     'rebelot/kanagawa.nvim',
     lazy = false,
-    priority = 1000,
+    priority = 1001,
     opts = {
       theme = "dragon", -- Load "wave" theme when 'background' option is not set
       background = {    -- map the value of 'background' option to a theme
@@ -149,7 +149,7 @@ return {
     'nvim-lualine/lualine.nvim',
     -- See `:help lualine.txt`
     event = "ColorScheme",
-    dependencies = { "rebelot/kanagawa.nvim" },
+    dependencies = { "rebelot/kanagawa.nvim", "NickvanDyke/opencode.nvim"},
     opts = {
       options = {
         theme = default,

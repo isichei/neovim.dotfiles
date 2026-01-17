@@ -74,6 +74,7 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    enabled = false,
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     main = "ibl",
@@ -103,13 +104,6 @@ require('lazy').setup({
     config = function()
       require("bufferline").setup {}
     end,
-  },
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    keys = {
-      { "<leader>xx", function() require("trouble").toggle() end, desc = "Toggle Trouble" }
-    },
   },
   {
     "nvimtools/none-ls.nvim",

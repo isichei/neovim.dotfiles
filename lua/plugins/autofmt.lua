@@ -72,7 +72,7 @@ return {
 
             print(client.name)
             vim.lsp.buf.format {
-              async = false,
+              async = true,
               filter = function(c)
                 return c.id == client.id
               end,
