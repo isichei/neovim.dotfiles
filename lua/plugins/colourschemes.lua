@@ -128,6 +128,7 @@ return {
         treesitter = true,
         treesitter_context = true,
         which_key = true,
+        snacks = true,
       },
       color_overrides = {
         mocha = {
