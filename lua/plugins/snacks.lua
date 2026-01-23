@@ -51,7 +51,6 @@ return {
 		},
 	},
 	keys = {
-		-- Files and buffers (matching your telescope keybindings... now snacks)
 		{ "<leader>?", function() Snacks.picker.recent() end, desc = "Find recently opened files" },
 		{ "<leader><space>", function() Snacks.picker.buffers() end, desc = "Find existing buffers" },
 		{ "<leader>sf", function() Snacks.picker.files() end, desc = "Search Files" },
@@ -62,6 +61,7 @@ return {
 		{ "<leader>sg", function() Snacks.picker.grep() end, desc = "Search by Grep" },
 		{ "<leader>s/", function() Snacks.picker.grep_buffers() end, desc = "Search Open Files" },
 		{ "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Search Diagnostics" },
+		{ "<leader>sl", function() Snacks.picker.lines() end, desc = "Search Buffer Lines" },
 		-- Git
 		{ "<leader>gf", function() Snacks.picker.git_files() end, desc = "Git Files" },
 		{ "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
