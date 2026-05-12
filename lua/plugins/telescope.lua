@@ -39,8 +39,23 @@ return {
 
       -- Couldn't find a way to set a default theme for the builtins
       local default_telescope_theme = "ivy"
-      local used_builtins = { "find_files", "git_files", "oldfiles", "colorscheme", "buffers", "help_tags", "diagnostics",
-        "live_grep" }
+      local used_builtins = {
+        "find_files",
+        "git_files",
+        "oldfiles",
+        "colorscheme",
+        "buffers",
+        "help_tags",
+        "diagnostics",
+        "live_grep",
+        "current_buffer_fuzzy_find",
+        "git_branches",
+        "git_commits",
+        "git_bcommits",
+        "git_bcommits_range",
+        "git_status",
+        "git_stash",
+      }
 
       -- set my default settings for pickers
       local telescope_pickers = {
@@ -82,7 +97,7 @@ return {
 
 
       -- Add some keymaps (see `:help telescope.builtin`)
-      vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+      vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = '[S]earch [R]ecent files' })
       vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
       vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
@@ -104,6 +119,21 @@ return {
         }
       end, { desc = '[S]earch Open Files' })
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+
+      -- Buffer
+      vim.keymap.set('n', '<leader>sl', require('telescope.builtin').current_buffer_fuzzy_find,
+        { desc = '[S]earch buffer [L]ines' })
+
+      -- Git
+      vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = 'Git Branches' })
+      vim.keymap.set('n', '<leader>gl', require('telescope.builtin').git_commits, { desc = 'Git Log' })
+      vim.keymap.set('n', '<leader>gL', require('telescope.builtin').git_bcommits_range, { desc = 'Git Log Line' })
+      vim.keymap.set('n', '<leader>gs', require('telescope.builtin').git_status, { desc = 'Git Status' })
+      vim.keymap.set('n', '<leader>gS', require('telescope.builtin').git_stash, { desc = 'Git Stash' })
+      vim.keymap.set('n', '<leader>gF', require('telescope.builtin').git_bcommits, { desc = 'Git Log File' })
+      vim.keymap.set('n', '<leader>gd', function()
+        require('gitsigns').setqflist('all')
+      end, { desc = 'Git Diff (Hunks)' })
     end
   },
 }

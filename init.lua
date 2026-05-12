@@ -52,8 +52,6 @@ require('lazy').setup({
         vim.keymap.set("n", "<leader>gn", require("gitsigns").next_hunk, { buffer = bufnr, desc = "Go to next git Hunk" })
         vim.keymap.set("n", "<leader>gi", require("gitsigns").preview_hunk_inline,
           { buffer = bufnr, desc = "Git Preview Hunk Inline" })
-        vim.keymap.set("n", "<leader>gs", require("gitsigns").preview_hunk,
-          { buffer = bufnr, desc = "Git Preview Hunk" })
         vim.keymap.set("n", "<leader>ghr", ":Gitsigns reset_hunk<CR>", { buffer = bufnr, desc = "Git Reset Hunk" })
         vim.keymap.set("n", "<leader>ghR", require("gitsigns").reset_buffer,
           { buffer = bufnr, desc = "Git Reset Buffer" })
@@ -65,7 +63,7 @@ require('lazy').setup({
         vim.keymap.set("n", "<leader>ghu", require("gitsigns").undo_stage_hunk,
           { buffer = bufnr, desc = "Git undo stage Hunk" })
 
-        vim.keymap.set("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<CR>",
+        vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<CR>",
           { desc = "Toggle git blame current line" })
         vim.keymap.set("n", "<leader>g|", "<cmd>Gitsigns diffthis<CR>", { desc = "Vertical Git diff" })
       end,
