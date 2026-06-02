@@ -127,7 +127,7 @@ vim.keymap.set("n", "<leader><S-Tab>", "<cmd>cprev<CR>zz")
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
 -- copy relative path to clipboard
-vim.keymap.set("n", "cr", function()
+vim.keymap.set("n", "<leader>cr", function()
 	local filepath = vim.api.nvim_buf_get_name(0) -- absolute path to current file
 	local cwd = vim.fn.getcwd() -- cwd from where nvim was started
 	local relpath = vim.fn.fnamemodify(filepath, ":." ) -- path relative to cwd

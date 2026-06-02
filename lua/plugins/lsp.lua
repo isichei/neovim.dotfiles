@@ -163,6 +163,8 @@ return {
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
+      -- Remove pyright since it's installed globally, not by Mason
+      ensure_installed = vim.tbl_filter(function(s) return s ~= 'pyright' end, ensure_installed)
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
       })
@@ -176,10 +178,16 @@ return {
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
+            vim.lsp.config(server_name).setup(server)
+            -- require('lspconfig')[server_name].setup(server)
           end,
         },
       }
+
+      -- Manually set up pyright because it is installed globally, not via Mason
+      local pyright_config = servers.pyright or {}
+      pyright_config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, pyright_config.capabilities or {})
+      vim.lsp.config(server_name).setup(pyright_config)
     end,
   },
   { -- autocomplete
