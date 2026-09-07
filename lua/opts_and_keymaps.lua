@@ -138,3 +138,57 @@ end, { desc = "[C]opy [r]elative filepath to clipboard" })
 -- Close buffer
 vim.keymap.set("n", "<leader>cb", ":bp | bd#<CR>", { desc = "Close buffer without closing split" })
 
+-- Winbar breadcrumbs (shows current function/class from LSP)
+_G.winbar_breadcrumbs = function()
+	local ok, navic = pcall(require, "nvim-navic")
+	if ok and navic.is_available() then
+		return navic.get_location()
+	end
+	return ""
+end
+vim.opt.winbar = "%!v:lua.winbar_breadcrumbs()"
+
+-- DIAGNOSTICS TOGGLES
+-- State variables for toggles
+local diagnostics_state = {
+	inline = true,       -- current: inline virtual text enabled
+	show_warnings = true, -- current: warnings shown
+}
+
+-- Apply diagnostics config based on current state
+local function apply_diagnostics_config()
+	local config = {
+		virtual_text = diagnostics_state.inline,
+		signs = true,
+		underline = true,
+	}
+
+	if not diagnostics_state.show_warnings then
+		local severity = { min = vim.diagnostic.severity.ERROR }
+		config.virtual_text = diagnostics_state.inline and { severity = severity } or false
+		config.signs = { severity = severity }
+		config.underline = { severity = severity }
+	end
+
+	vim.diagnostic.config(config)
+end
+
+-- Set default diagnostics config
+apply_diagnostics_config()
+
+-- Keymap 1: Toggle inline virtual text vs sign-only
+vim.keymap.set("n", "<leader>td", function()
+	diagnostics_state.inline = not diagnostics_state.inline
+	apply_diagnostics_config()
+	local mode = diagnostics_state.inline and "inline" or "sign-only"
+	print("Diagnostics display: " .. mode)
+end, { desc = "[T]oggle [D]iagnostics display mode (inline/sign-only)" })
+
+-- Keymap 2: Toggle warnings on/off
+vim.keymap.set("n", "<leader>tw", function()
+	diagnostics_state.show_warnings = not diagnostics_state.show_warnings
+	apply_diagnostics_config()
+	local mode = diagnostics_state.show_warnings and "errors + warnings" or "errors only"
+	print("Diagnostics severity: " .. mode)
+end, { desc = "[T]oggle [W]arnings (errors only / errors + warnings)" })
+

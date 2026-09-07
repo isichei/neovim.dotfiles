@@ -211,7 +211,11 @@ require('lazy').setup({
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    opts = { mode = "cursor", max_lines = 3 }
+    opts = {
+      mode = "cursor",
+      max_lines = 3,
+      trim_scope = "inner",
+    },
   },
   {
     'akinsho/bufferline.nvim',
@@ -259,7 +263,6 @@ vim.diagnostic.config({
   underline = true,
   update_in_insert = false,
 })
-
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
